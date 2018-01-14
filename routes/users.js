@@ -18,7 +18,7 @@ router.post('/login', function(req, res, next) {
   connection.query(
       "SELECT *, DATE_FORMAT(dob,'%Y %M %d') as birthday " +
       "FROM users " +
-      "WHERE userName = ? " +
+      "WHERE username = ? " +
         "AND password = ?",
       [username, password], function(err, row, field){
         if(err){
@@ -59,7 +59,7 @@ router.post('/registration', function(req, res, next) {
     }else {
         connection.query(
             "INSERT INTO users" +
-                "(`userName`, `email`, `firstName`, " +
+                "(`username`, `email`, `firstName`, " +
                     "`lastName`, `dob`, `gender`, `type`, `password`)" +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
             [username, email, firstName, lastName, birthDay, gender, type, password],
