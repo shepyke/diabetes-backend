@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12a75ccb-a326-4999-86a7-c01112274b7b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/routes/users.js" afterPath="$PROJECT_DIR$/routes/users.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -30,8 +29,8 @@
       <file leaf-file-name="users.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/users.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="64" column="70" lean-forward="true" selection-start-line="64" selection-start-column="70" selection-end-line="64" selection-end-column="70" />
+            <state relative-caret-position="138">
+              <caret line="62" column="49" lean-forward="true" selection-start-line="62" selection-start-column="49" selection-end-line="62" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -80,7 +79,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="262" />
     <option name="y" value="-4" />
     <option name="width" value="874" />
@@ -157,15 +156,15 @@
       <workItem from="1515519225265" duration="2580000" />
       <workItem from="1515571955617" duration="8258000" />
       <workItem from="1515616708779" duration="5475000" />
-      <workItem from="1515708728557" duration="13795000" />
+      <workItem from="1515708728557" duration="13957000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39791000" />
+    <option name="totallyTimeSpent" value="39953000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="51" y="-4" width="1315" height="772" extended-state="7" />
+    <frame x="51" y="-4" width="1315" height="772" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23954372" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -272,8 +271,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/users.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="64" column="70" lean-forward="true" selection-start-line="64" selection-start-column="70" selection-end-line="64" selection-end-column="70" />
+        <state relative-caret-position="138">
+          <caret line="62" column="49" lean-forward="true" selection-start-line="62" selection-start-column="49" selection-end-line="62" selection-end-column="49" />
           <folding />
         </state>
       </provider>

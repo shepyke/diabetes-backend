@@ -16,9 +16,9 @@ router.post('/login', function(req, res, next) {
   var password = req.body.password;
 
   connection.query(
-      "SELECT *, DATE_FORMAT(date_of_birth,'%Y %M %d') as birthdate " +
+      "SELECT *, DATE_FORMAT(dob,'%Y %M %d') as birthday " +
       "FROM users " +
-      "WHERE username = ? " +
+      "WHERE userName = ? " +
         "AND password = ?",
       [username, password], function(err, row, field){
         if(err){
@@ -46,12 +46,12 @@ router.post('/registration', function(req, res, next) {
     var email = user.email;
     var firstName = user.firstName;
     var lastName = user.lastName;
-    var birthDate = user.birthDate;
+    var birthDay = user.birthDay;
     var gender = user.gender;
     var type = '1';//user.type;
 
     if(username === '' || password === '' || repassword === '' || email === ''
-        || firstName === '' || lastName === '' || birthDate === ''
+        || firstName === '' || lastName === '' || birthDay === ''
         || gender === '' || type === ''){
         res.send({ 'success': false, 'message': 'Please fill all mandatory field'});
     }else if(repassword !== password){
@@ -59,10 +59,10 @@ router.post('/registration', function(req, res, next) {
     }else {
         connection.query(
             "INSERT INTO users" +
-                "(`username`, `email`, `first_name`, " +
-                    "`last_name`, `date_of_birth`, `gender`, `type`, `password`)" +
+                "(`userName`, `email`, `firstName`, " +
+                    "`lastName`, `dob`, `gender`, `type`, `password`)" +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
-            [username, email, firstName, lastName, birthDate, gender, type, password],
+            [username, email, firstName, lastName, birthDay, gender, type, password],
             function (err, row, field) {
                 if (err && err.toString().indexOf('username_UNIQUE') !== -1) {
                     console.log(err);
