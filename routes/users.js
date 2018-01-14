@@ -16,13 +16,18 @@ router.post('/login', function(req, res, next) {
   var password = req.body.password;
 
   connection.query(
-      "SELECT *, DATE_FORMAT(date_of_birth,'%Y %M %d') as birthdate FROM users WHERE username = ? AND password = ?",
+      "SELECT *, DATE_FORMAT(date_of_birth,'%Y %M %d') as birthdate " +
+      "FROM users " +
+      "WHERE username = ? " +
+        "AND password = ?",
       [username, password], function(err, row, field){
         if(err){
           console.log(err);
           res.send({ 'success': false, 'message': 'Could not connect to database'})
         }
+
         console.log(row[0]);
+
         if(row.length > 0){
           res.send({ 'success': true, 'user': row[0]});
         }else{
@@ -30,6 +35,47 @@ router.post('/login', function(req, res, next) {
         }
       }
   );
+
+});
+
+router.post('/registration', function(req, res, next) {
+    var user = req.body.user;
+    var username = user.username;
+    var password = user.password;
+    var repassword = user.repassword;
+    var email = user.email;
+    var firstName = user.firstName;
+    var lastName = user.lastName;
+    var birthDate = user.birthDate;
+    var gender = user.gender;
+    var type = '1';//user.type;
+
+    if(username === '' || password === '' || repassword === '' || email === ''
+        || firstName === '' || lastName === '' || birthDate === ''
+        || gender === '' || type === ''){
+        res.send({ 'success': false, 'message': 'Please fill all mandatory field'});
+    }else if(repassword !== password){
+        res.send({ 'success': false, 'message': 'The re-password is mismatching'});
+    }else {
+        connection.query(
+            "INSERT INTO users" +
+                "(`username`, `email`, `first_name`, " +
+                    "`last_name`, `date_of_birth`, `gender`, `type`, `password`)" +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
+            [username, email, firstName, lastName, birthDate, gender, type, password],
+            function (err, row, field) {
+                if (err && err.toString().indexOf('username_UNIQUE') !== -1) {
+                    console.log(err);
+                    res.send({'success': false, 'message': 'This username is already in use. Please select another one.'})
+                }else if(err){
+                    console.log(err);
+                    res.send({'success': false, 'message': 'Could not connect to database'})
+                }else{
+                    res.send({'success': true, 'user': user});
+                }
+            }
+        );
+    }
 
 });
 
