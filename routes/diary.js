@@ -14,14 +14,16 @@ var connection = mysql.createConnection({
 router.post('/getDiary', function(req, res, next) {
     var userId = req.body.userId;
     var time = req.body.time;
+    console.log("userId: " + userId);
+    console.log("time: " + time);
 
     connection.query(
         "SELECT * " +
         "FROM measurements " +
         "WHERE userId = ? " +
-        "AND DAY(?) = DAY(NOW()) " +
-        "AND MONTH(?) = MONTH(NOW()) " +
-        "AND YEAR(?) = YEAR(NOW())",
+        "AND DAY(time) = DAY(?) " +
+        "AND MONTH(time) = MONTH(?) " +
+        "AND YEAR(time) = YEAR(?)",
         [userId, time, time, time],
         function(err, row, field){
             if(err){
