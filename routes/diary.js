@@ -45,8 +45,28 @@ router.post('/getDiary', function(req, res, next) {
 });
 
 router.post('/addMeasurement', function(req, res, next) {
+    var diary = req.body.diary;
+    var userId = diary.userId;
+    var type = diary.type;
+    var when = diary.when;
+    var time = diary.time;
+    var insulin = diary.insulin;
+    var sugar = diary.sugar;
 
-
+    connection.query(
+        "INSERT INTO measurements" +
+        "(`userId`, `type`, `when`, `time`, `insulin`, `sugar`)" +
+        "VALUES (?, ?, ?, ?, ?, ?);",
+        [userId, type, when, time, insulin, sugar],
+        function (err, row, field) {
+            if(err){
+                console.log(err);
+                res.send({'success': false, 'message': 'Could not connect to database'})
+            }else{
+                res.send({'success': true, 'diary': diary});
+            }
+        }
+    );
 });
 
 router.post('/deleteMeasurement', function(req, res, next) {
