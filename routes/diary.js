@@ -23,7 +23,8 @@ router.post('/getDiary', function(req, res, next) {
         "WHERE userId = ? " +
         "AND DAY(time) = DAY(?) " +
         "AND MONTH(time) = MONTH(?) " +
-        "AND YEAR(time) = YEAR(?)",
+        "AND YEAR(time) = YEAR(?) " +
+        "ORDER BY time",
         [userId, time, time, time],
         function(err, row, field){
             if(err){
