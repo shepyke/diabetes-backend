@@ -48,4 +48,28 @@ router.post('/addMeasurement', function(req, res, next) {
 
 });
 
+router.post('/deleteMeasurement', function(req, res, next) {
+    var measurementId = req.body.measurementId;
+    console.log("measurementId: " + measurementId);
+
+    connection.query(
+        "DELETE FROM measurements WHERE measurementId = ? ",
+        [measurementId],
+        function(err, row, field){
+            if(err){
+                console.log(err);
+                res.send({ 'success': false, 'message': 'Could not connect to database'})
+            }
+
+            console.log(row);
+
+            if(row['affectedRows'] == '1'){
+                res.send({ 'success': true, 'message': 'You have successfully deleted the measurement'});
+            }else{
+                res.send({ 'success': false, 'message': 'There werent any measurements with this id in your diary'});
+            }
+        }
+    );
+});
+
 module.exports = router;
