@@ -8,7 +8,8 @@ var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'root',
-    database: 'diabetes'
+    database: 'diabetes',
+    timezone: 'utc'
 });
 
 router.post('/login', function(req, res, next) {
