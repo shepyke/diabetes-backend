@@ -74,6 +74,37 @@ router.post('/addMeasurement', function(req, res, next) {
     }
 });
 
+router.post('/updateMeasurement', function(req, res, next) {
+    var diary = req.body.diary;
+    var measurementId = diary.measurementId;
+    var type = diary.type;
+    var when = diary.when;
+    var time = diary.time;
+    var insulin = diary.insulin;
+    var sugar = diary.sugar;
+
+    console.log("updateDiary: " + JSON.stringify(diary,null,4));
+
+    var query = "UPDATE measurements SET `type` = '" + type + "', `when` = '" + when +
+        "', `time` = '" + time + "', `insulin` = '" + insulin + "', `sugar` = '" + sugar +
+        "' WHERE `measurementId` = '" + measurementId + "';";
+
+    if(insulin === '' || sugar === '' || time === ''){
+        res.send({ 'success': false, 'message': 'Please fill all mandatory field'});
+    }else {
+        connection.query(query, {}, function (err, row, field) {
+                if (err) {
+                    console.log(err);
+                    res.send({'success': false, 'message': 'Could not connect to database'})
+                } else {
+                    res.send({'success': true, 'diary': diary});
+                }
+            }
+        );
+    }
+});
+
+
 router.post('/deleteMeasurement', function(req, res, next) {
     var measurementId = req.body.measurementId;
     console.log("measurementId: " + measurementId);
