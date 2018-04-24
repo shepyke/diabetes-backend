@@ -17,7 +17,7 @@ router.post('/login', function(req, res, next) {
   var password = req.body.password;
 
   connection.query(
-      "SELECT *, DATE_FORMAT(dob,'%Y %M %d') as birthday " +
+      "SELECT *" +
       "FROM users " +
       "WHERE username = ? " +
         "AND password = ?",
@@ -32,7 +32,7 @@ router.post('/login', function(req, res, next) {
         if(row.length > 0){
           res.send({ 'success': true, 'user': row[0]});
         }else{
-          res.send({ 'success': false, 'message': 'User not found'});
+          res.send({ 'success': false, 'message': 'User not found or the password is incorrect'});
         }
       }
   );
