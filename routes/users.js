@@ -72,6 +72,7 @@ router.post('/registration', function(req, res, next) {
                     console.log(err);
                     res.send({'success': false, 'message': 'Could not connect to database'})
                 }else{
+                    user.userId = row.insertId;
                     res.send({'success': true, 'user': user});
                 }
             }
