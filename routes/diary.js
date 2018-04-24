@@ -5,9 +5,9 @@ var router = express.Router();
 var mysql = require('mysql')
 
 var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
+    host: 'den1.mysql4.gear.host',
+    user: 'diabetes',
+    password: 'Zd1224II_4!u',
     database: 'diabetes',
     timezone: 'utc'
 });
