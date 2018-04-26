@@ -64,7 +64,13 @@ router.post('/addIntake', function(req, res, next) {
         }
         totalIntake.avgGI = totalIntake.avgGI / intakes.length;
 
-        console.log("totalIntake: " + JSON.stringify(totalIntake,null,4));
+        totalIntake = {
+            avgGI: this.precisionRound(totalIntake.avgGI, 1),
+            totalCarbohydrate: this.precisionRound(totalIntake.totalCarbohydrate, 2),
+            totalFat: this.precisionRound(totalIntake.totalFat, 2),
+            totalCalorie: this.precisionRound(totalIntake.totalCalorie, 2),
+            totalProtein: this.precisionRound(totalIntake.totalProtein, 2),
+        }
 
         connection.query(
             "INSERT INTO intakes" +
@@ -85,5 +91,10 @@ router.post('/addIntake', function(req, res, next) {
         );
     }
 });
+
+function precisionRound(number, precision) {
+    var factor = Math.pow(10, precision);
+    return Math.round(number * factor) / factor;
+}
 
 module.exports = router;
