@@ -62,15 +62,12 @@ router.post('/addIntake', function(req, res, next) {
             finalFoodIds += item.foodId + ',';
             finalAmounts += item.amount + ',';
         }
-        totalIntake.avgGI = totalIntake.avgGI / intakes.length;
 
-        totalIntake = {
-            avgGI: this.precisionRound(totalIntake.avgGI, 1),
-            totalCarbohydrate: this.precisionRound(totalIntake.totalCarbohydrate, 2),
-            totalFat: this.precisionRound(totalIntake.totalFat, 2),
-            totalCalorie: this.precisionRound(totalIntake.totalCalorie, 2),
-            totalProtein: this.precisionRound(totalIntake.totalProtein, 2),
-        }
+        totalIntake.avgGI = this.precisionRound(totalIntake.avgGI / intakes.length, 1);
+        totalIntake.totalCarbohydrate = this.precisionRound(totalIntake.totalCarbohydrate, 2);
+        totalIntake.totalFat = this.precisionRound(totalIntake.totalFat, 2);
+        totalIntake.totalCalorie = this.precisionRound(totalIntake.totalCalorie, 2);
+        totalIntake.totalProtein = this.precisionRound(totalIntake.totalProtein, 2);
 
         connection.query(
             "INSERT INTO intakes" +
