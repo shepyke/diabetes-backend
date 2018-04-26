@@ -20,10 +20,10 @@ router.post('/getMeasurementData', function(req, res, next) {
     var toDate = req.body.toDate;
 
     var query1 = "SELECT * FROM measurements WHERE userId = "
-        + userId + " AND time >= '" + fromDate + "' AND time =< '" + toDate + "' ORDER BY time;";
+        + userId + " AND time >= '" + fromDate + "' AND time <= '" + toDate + "' ORDER BY time;";
 
     var query2 = "SELECT * FROM intakes WHERE userId = "
-        + userId + " AND time >= '" + fromDate + "' AND time =< '" + toDate + "' ORDER BY time;";
+        + userId + " AND time >= '" + fromDate + "' AND time <= '" + toDate + "' ORDER BY time;";
 
     var return_data = {};
 
