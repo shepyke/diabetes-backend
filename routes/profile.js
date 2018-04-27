@@ -7,29 +7,26 @@ var storage = multer.diskStorage({
         cb(null, 'uploads/')
     },
     filename: function (req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now() + '.jpg')
+        console.log("file: " + JSON.stringify(file,null,4));
+        cb(null, file.originalname)
     }
 });
 
 var upload = multer({ storage: storage }).single('avatar');
 
-
 router.post('/', function (req, res) {
+    var message;
+    var success;
     upload(req, res, function (err) {
         if (err) {
-            res.send({
-                success: false,
-                message: 'Something went wrong!'
-            });
+            message = "Something went wrong";
+            success = false;
+        }else{
+            message = "Successfully uploaded a new profile photo";
+            success = true;
         }
-        res.send({
-            success: true,
-            message: 'Image uploaded!'
-        });
-
-        // Everything went fine
     })
+    res.send({'success': success, 'message': message});
 });
-
 
 module.exports = router;
