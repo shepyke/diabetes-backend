@@ -49,7 +49,19 @@ router.post('/registration', function(req, res, next) {
     var lastName = user.lastName;
     var birthDay = user.birthDay;
     var gender = user.gender;
-    var type = '1';//user.type;
+    var type = user.type;
+    var image = user.profileImage;
+
+    var finalUser = {
+        username: username,
+        email: email,
+        firstName: firstName,
+        lastName: lastName,
+        birthDay: birthDay,
+        gender: gender,
+        type: type,
+        image: profileImage,
+    }
 
     if(username === '' || password === '' || repassword === '' || email === ''
         || firstName === '' || lastName === '' || birthDay === ''
@@ -60,10 +72,10 @@ router.post('/registration', function(req, res, next) {
     }else {
         connection.query(
             "INSERT INTO users" +
-                "(`username`, `email`, `firstName`, " +
-                    "`lastName`, `dob`, `gender`, `type`, `password`)" +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?);",
-            [username, email, firstName, lastName, birthDay, gender, type, password],
+                "(`username`, `email`, `firstName`, `lastName`, " +
+                "`dob`, `gender`, `image`, `type`, `password`)" +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);",
+            [username, email, firstName, lastName, birthDay, gender, image, type, password],
             function (err, row, field) {
                 if (err && err.toString().indexOf('username_UNIQUE') !== -1) {
                     console.log(err);
@@ -72,8 +84,8 @@ router.post('/registration', function(req, res, next) {
                     console.log(err);
                     res.send({'success': false, 'message': 'Could not connect to database'})
                 }else{
-                    user.userId = row.insertId;
-                    res.send({'success': true, 'user': user});
+                    finalUser.userId = row.insertId;
+                    res.send({'success': true, 'user': finalUser});
                 }
             }
         );
