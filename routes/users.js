@@ -71,7 +71,7 @@ router.post('/registration', function(req, res, next) {
         connection.query(
             "INSERT INTO users" +
                 "(`username`, `email`, `firstName`, `lastName`, " +
-                "`dob`, `gender`, `image`, `type`, `password`)" +
+                "`dob`, `gender`, `profileImage`, `type`, `password`)" +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);",
             [username, email, firstName, lastName, birthDay, gender, profileImage, type, password],
             function (err, row, field) {
