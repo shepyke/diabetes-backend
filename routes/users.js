@@ -27,8 +27,6 @@ router.post('/login', function(req, res, next) {
           res.send({ 'success': false, 'message': 'Could not connect to database'})
         }
 
-        console.log(row[0]);
-
         if(row.length > 0){
           res.send({ 'success': true, 'user': row[0]});
         }else{
@@ -50,7 +48,7 @@ router.post('/registration', function(req, res, next) {
     var birthDay = user.birthDay;
     var gender = user.gender;
     var type = user.type;
-    var image = user.profileImage;
+    var profileImage = user.profileImage;
 
     var finalUser = {
         username: username,
@@ -60,7 +58,7 @@ router.post('/registration', function(req, res, next) {
         birthDay: birthDay,
         gender: gender,
         type: type,
-        image: profileImage,
+        profileImage: profileImage,
     }
 
     if(username === '' || password === '' || repassword === '' || email === ''
@@ -75,7 +73,7 @@ router.post('/registration', function(req, res, next) {
                 "(`username`, `email`, `firstName`, `lastName`, " +
                 "`dob`, `gender`, `image`, `type`, `password`)" +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);",
-            [username, email, firstName, lastName, birthDay, gender, image, type, password],
+            [username, email, firstName, lastName, birthDay, gender, profileImage, type, password],
             function (err, row, field) {
                 if (err && err.toString().indexOf('username_UNIQUE') !== -1) {
                     console.log(err);
