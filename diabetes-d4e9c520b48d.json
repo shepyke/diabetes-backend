@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "diabetes-93dcc",
+  "private_key_id": "d4e9c520b48ddef0b3d70de0585c5647abf7b3f4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDTiN+WjCpvA5iI\njlIjr4TPEAj+puGsnBAR4n5Il31zQASOOLs8f1QPauKNRYHiV42JD24mgGz1+b37\nQ3oM0Gfm31sy8znOUIDzjEt0TUi7PTqjz12l1yhVspR/bwZ0L5rOAwrbIqFTp+0I\nN70gjR4Qk13N4ggp9CEs/dB3v62DL75vNY4LsM4JCZuw4TUH1Pr2bX4fULNLOewP\nZmIpxFpjFxkqX+lQrAzMxlkGQMO/W49tHUhTrouSImbhud7sZD1WvN9tXW0Llaa9\nlE/+h1oAPWt9HZZw0T2wcK9dgC9v0mCuD2nT/4IQyjDw3h08TMCzM8bHKt7e56MH\nQ3Bli8CZAgMBAAECggEABqq2LUb+oWASIx+lLBXAkEwXlHsK+scyZHXod/46SHMY\nkajtEcOLkS7TtBMgPFN5FPxFAvaiOIBmAfDG/HdnBuo8NBdhV4THA6YEzMYQyEHu\nQrJq56qnzUejEX8cy3WioeKLqYtmXT4aJNuo3MlFzMzwNGhuzG+yyfm348ZJQCym\nzvzKa30XBAOzKgVmvga85cuh7+TeqvLgea/FNfdOWNLNbkgDy/WvJTW6zizgDdpw\nuhuuLRHrcli3+tDANIorDZVUDGr5p7zz60vmMiRAwupr9BmgyRYh0SI2lluTeeJ2\n0j3DRkG1fmXuMQBLk8Cub0OwDYlUDhS4iyzjcetoTwKBgQD/XKyIPmj1CrBgJNUz\nQGzKKmjYL4ju59sMWbNfN0CxqwtL7BwkTob1LujOKpsP08DIL+EqpSfw1Gz8q4k5\n09pQGehSBc6uBCx/W6iqsKJ5ZW/csCWr+vWaX5DkLifg/IvQ8bLih/c/wDGFvooe\nChP+a43Y1FntrWTphzHl/Jq67wKBgQDUECsGYw/jRIjNxR0UAdj8fV+3SPrSudBZ\n6FxT2fjOcWGZbO9rB8lc6au3XVQ+xJBbd2/Dm40MHS9FNgmZ19t35Xd01W2lGU6M\njKQCQUInqfaJWDS5GvUeqoquTEPQl9h59W0CvWDYhJlW3P8Wbd4CzD/y4NwGBtc8\npIP8NiTc9wKBgQChuO5nhqbv8WoMKaeAQt/jFQK7Tzd4ngvjAXgQ6CwnmPyZg5m7\nAKSF6MR1tRPo7SFdZr1CRcBKzC2Nw5Evt1S+f/na4GSpXmlT6xehqiXrnes/J6tk\nBJbAwp8/c1+8JBTkKf4xawySKkTyv9428gkBitoVpT6iwLp1DzLxxY20rwKBgEvN\n98NRuAUyo4CC3LEhM/KV0phPIzIesAbjk9V5joIlb5ELqs3ku6tV8EccupexZjT8\nDdyrhxD0gchI18fBrLdANKJ0BLzGvhhp0drofwB0tidEe5xLsaGjru09X+R50y1N\neQlIrwzW4YV2fE0FOx5e6uEkViJlYZ1Q5clLhYPjAoGBAIMy7KD5uk6VRGXC9VS9\nMx8uh79n6SZO2uv1NnAkWxAfOaR5GEowWl4JKSz6XcV0hG9TSc+Sgob7GMxkvZai\n/vIA7tumKI4RU5zbKUjhMdsNueah+PueD7pG5/f776mHeC0xsEj0/MTvZAZuMffa\n3q6K5tjpSoOZ336WhNTxXI+p\n-----END PRIVATE KEY-----\n",
+  "client_email": "mate-pasztor@diabetes-93dcc.iam.gserviceaccount.com",
+  "client_id": "108678212054472124392",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/mate-pasztor%40diabetes-93dcc.iam.gserviceaccount.com"
+}
