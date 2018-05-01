@@ -3,18 +3,6 @@ var router = express.Router();
 var multer = require('multer');
 const imgUpload = require('../modules/imgUpload');
 
-var filePath = 'https://diabetes-backend.herokuapp.com/uploads/';
-
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'public/uploads/')
-    },
-    filename: function (req, file, cb) {
-        filePath += file.originalname;
-        cb(null, file.originalname);
-    }
-});
-
 var upload = multer({
     storage: multer.MemoryStorage,
     fileSize: 5 * 1024 * 1024,
