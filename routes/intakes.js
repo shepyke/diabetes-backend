@@ -40,6 +40,7 @@ router.post('/addIntake', function(req, res, next) {
     var intakes = req.body.intakes;
     var userId = req.body.userId;
     var time = req.body.time;
+    var hasUndefined = false;
 
     var totalIntake = {
         avgGI: 0,
@@ -54,11 +55,17 @@ router.post('/addIntake', function(req, res, next) {
 
     if (intakes.length > 0) {
         for (var item of intakes) {
-            totalIntake.avgGI += foods[item.foodId - 1].glycemicIndex;
-            totalIntake.totalCarbohydrate += (foods[item.foodId - 1].carbohydrate * item.amount) / 100;
-            totalIntake.totalFat += (foods[item.foodId - 1].fat * item.amount) / 100;
-            totalIntake.totalCalorie += (foods[item.foodId - 1].calorie * item.amount) / 100;
-            totalIntake.totalProtein += (foods[item.foodId - 1].protein * item.amount) / 100;
+            if(foods[item.foodId - 1].glycemicIndex === -1 || foods[item.foodId - 1].carbohydrate === -1
+                || foods[item.foodId - 1].fat === -1 || foods[item.foodId - 1].calorie === -1
+                || foods[item.foodId - 1].protein === -1){
+                hasUndefined = true;
+            }
+
+            totalIntake.avgGI += (foods[item.foodId - 1].glycemicIndex !== -1) ? foods[item.foodId - 1].glycemicIndex : 0;
+            totalIntake.totalCarbohydrate += (foods[item.foodId - 1].carbohydrate !== -1) ? (foods[item.foodId - 1].carbohydrate * item.amount) / 100 : 0;
+            totalIntake.totalFat += (foods[item.foodId - 1].fat !== -1) ? (foods[item.foodId - 1].fat * item.amount) / 100 : 0;
+            totalIntake.totalCalorie += (foods[item.foodId - 1].calorie !== -1) ? (foods[item.foodId - 1].calorie * item.amount) / 100 : 0;
+            totalIntake.totalProtein += (foods[item.foodId - 1].protein !== -1) ? (foods[item.foodId - 1].protein * item.amount) / 100 : 0;
             finalFoodIds += item.foodId + ',';
             finalAmounts += item.amount + ',';
         }
@@ -72,7 +79,7 @@ router.post('/addIntake', function(req, res, next) {
         connection.query(
             "INSERT INTO intakes" +
             "(`userId`, `foodId`, `amount`, `time`, `glycemicIndex`, `totalCarbs`, " +
-                "`totalFat`, `totalCalorie`, `totalProtein`) " +
+            "`totalFat`, `totalCalorie`, `totalProtein`) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);",
             [userId, finalFoodIds, finalAmounts, time, totalIntake.avgGI,
                 totalIntake.totalCarbohydrate, totalIntake.totalFat,
@@ -82,7 +89,7 @@ router.post('/addIntake', function(req, res, next) {
                     console.log(err);
                     res.send({'success': false, 'message': 'Could not connect to database'})
                 } else {
-                    res.send({'success': true, 'intake': totalIntake});
+                    res.send({'success': true, 'intake': totalIntake, 'hasUndefined': hasUndefined});
                 }
             }
         );
