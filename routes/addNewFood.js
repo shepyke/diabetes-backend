@@ -38,6 +38,7 @@ router.post('/', function(req, res, next) {
                 console.log(err);
                 res.send({'success': false, 'message': 'Could not connect to database'})
             }else {
+                food.foodId = row.insertId;
                 res.send({'success': true, 'food': food});
             }
         }
