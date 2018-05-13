@@ -29,7 +29,7 @@ router.post('/', function(req, res, next) {
         "(`glycemicIndex`, `carbohydrate`, `fat`, `calorie`, `protein`, `barcode`, `foodName`, " +
         "`unit`, `registeredBy`)" +
         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);",
-        [glycemicIndex, carbohydrate, fat, calorie, protein, barcode, foodName,unit, userId],
+        [glycemicIndex, carbohydrate, fat, calorie, protein, barcode, foodName, unit, userId],
         function (err, row, field) {
             if (err && err.toString().indexOf('foodName_UNIQUE') !== -1) {
                 console.log(err);
